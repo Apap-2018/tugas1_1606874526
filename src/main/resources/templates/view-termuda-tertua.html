@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragment :: headerfragment">
+
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+
+
+<link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+<script th:src="@{/js/bootstrap.min.js}">
+	
+</script>
+</head>
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<div class="card">
+		<div class="card-header">
+			<h3>Data Pegawai Termuda</h3>
+		</div>
+		<div class="card-body">
+			<table class="table table-borderless">
+				<tbody>
+					<tr>
+						<th>NIP</th>
+						<td th:text="${termuda.nip}"></td>
+					</tr>
+					<tr>
+						<th>Nama</th>
+						<td th:text="${termuda.nama}"></td>
+					</tr>
+					<tr>
+						<th>Tempat Lahir</th>
+						<td th:text="${termuda.tempat_lahir}"></td>
+					</tr>
+					<tr>
+						<th>Tanggal Lahir</th>
+						<td th:text="${termuda.tanggal_lahir}"></td>
+					</tr>
+					<tr>
+						<th>Tahun Masuk</th>
+						<td th:text="${termuda.tahun_masuk}"></td>
+					</tr>
+					<tr>
+						<th>Nama Instansi</th>
+						<td th:text="${termuda.instansi.nama}"></td>
+					</tr>
+					<tr>
+						<th>Jabatan</th>
+						<td>
+							<ul th:each="jabatan : ${termuda.listJabatan}">
+								<li th:text="${jabatan.nama}" />
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<th>Gaji</th>
+						<td th:text="'Rp.'+${gajiTermuda}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card-header">
+			<h3>Data Pegawai Tertua</h3>
+		</div>
+		<div class="card-body">
+			<table class="table table-borderless">
+				<tbody>
+					<tr>
+						<th>NIP</th>
+						<td th:text="${tertua.nip}"></td>
+					</tr>
+					<tr>
+						<th>Nama</th>
+						<td th:text="${tertua.nama}"></td>
+					</tr>
+					<tr>
+						<th>Tempat Lahir</th>
+						<td th:text="${tertua.tempat_lahir}"></td>
+					</tr>
+					<tr>
+						<th>Tanggal Lahir</th>
+						<td th:text="${tertua.tanggal_lahir}"></td>
+					</tr>
+					<tr>
+						<th>Tahun Masuk</th>
+						<td th:text="${tertua.tahun_masuk}"></td>
+					</tr>
+					<tr>
+						<th>Nama Instansi</th>
+						<td th:text="${tertua.instansi.nama}"></td>
+					</tr>
+					<tr>
+						<th>Jabatan</th>
+						<td>
+							<ul th:each="jabatan : ${tertua.listJabatan}">
+								<li th:text="${jabatan.nama}" />
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<th>Gaji</th>
+						<td th:text="'Rp.'+${gajiTertua}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>

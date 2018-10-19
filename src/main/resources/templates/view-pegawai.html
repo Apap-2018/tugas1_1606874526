@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragment :: headerfragment">
+
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+
+
+<link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+<script th:src="@{/js/bootstrap.min.js}">
+	
+</script>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<div class=" container container-fluid" th:object="${pegawai}">
+		<h3 th:text="'Lihat Data Pegawai - ' + *{nip}"></h3>
+		<div align="left" style="padding: 20px">
+			<table>
+				<tbody>
+					<tr>
+						<th>NIP</th>
+						<td th:text="${pegawai.nip}"></td>
+					</tr>
+					<tr>
+						<th>Nama</th>
+						<td th:text="${pegawai.nama}"></td>
+					</tr>
+					<tr>
+						<th>Tempat Lahir</th>
+						<td th:text="${pegawai.tempat_lahir}"></td>
+					</tr>
+					<tr>
+						<th>Tanggal Lahir</th>
+						<td th:text="${pegawai.tanggal_lahir}"></td>
+					</tr>
+					<tr>
+						<th>Tahun Masuk</th>
+						<td th:text="${pegawai.tahun_masuk}"></td>
+					</tr>
+					<tr>
+						<th>Nama Instansi</th>
+						<td th:text="${pegawai.instansi.nama}"></td>
+					</tr>
+					<tr>
+						<th>Jabatan</th>
+						<td>
+							<ul th:each="jabatan : ${pegawai.listJabatan}">
+								<li th:text="${jabatan.nama}"></li>
+
+							</ul>
+						</td>
+					</tr>
+
+					<tr>
+						<th>Gaji</th>
+						<td th:text="'Rp' + ${gaji}"></td>
+					</tr>
+				</tbody>
+
+			</table>
+		</div>
+	</div>
+
+</body>
+
+</html>
