@@ -19,7 +19,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 /**
  * JabatanPegawaiModel
  */
-
 @Entity
 @Table(name = "jabatan_pegawai")
 public class JabatanPegawaiModel implements Serializable {
@@ -63,5 +62,4 @@ public class JabatanPegawaiModel implements Serializable {
 	public void setJabatan(JabatanModel jabatan) {
 		this.jabatan = jabatan;
 	}
-
 }

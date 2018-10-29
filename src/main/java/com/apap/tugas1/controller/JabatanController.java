@@ -20,9 +20,9 @@ import com.apap.tugas1.service.JabatanService;
 public class JabatanController {
 	@Autowired
 	private JabatanService jabatanService;
-
+	
 	@RequestMapping(value = "/jabatan/tambah", method = RequestMethod.GET)
-	private String add(Model model) {
+	private String addJabatan(Model model) {
 
 		model.addAttribute("jabatan", new JabatanModel());
 
@@ -42,7 +42,7 @@ public class JabatanController {
 	private String viewJabatan(@RequestParam(value = "id_jabatan", required = true) long id_jabatan, Model model) {
 		JabatanModel jabatan = jabatanService.getJabatanDetailById(id_jabatan);
 		model.addAttribute("jabatan", jabatan);
-		model.addAttribute("pageTitle", "Viewall Jabatan");
+		model.addAttribute("pageTitle", "Detail Jabatan");
 
 		return "view-jabatan";
 	}
@@ -62,18 +62,24 @@ public class JabatanController {
 		JabatanModel jabatanCurr = jabatanService.getJabatanDetailById(jabatan.getId());
 		model.addAttribute("jabatan", jabatanCurr.getNama());
 		jabatanService.deleteJabatanById(jabatan.getId());
+		model.addAttribute("pageTitle", "Hapus Jabatan");
+		
 		return "delete";
 	}
 
 	@RequestMapping(value = "/jabatan/update-jabatan", method = RequestMethod.GET)
 	private String updateJabatan(@RequestParam(value = "id_jabatan", required = true) long id_jabatan, Model model) {
 		model.addAttribute("jabatan", jabatanService.getJabatanDetailById(id_jabatan));
+		model.addAttribute("pageTitle", "Ubah Jabatan");
+		
 		return "update-jabatan";
 	}
 
 	@RequestMapping(value = "/jabatan/update-jabatan", method = RequestMethod.POST)
 	private String updateJabatanSubmit(@ModelAttribute JabatanModel jabatan, Model model) {
 		jabatanService.updateJabatan(jabatan);
+		model.addAttribute("pageTitle", "Ubah Jabatan");
+		
 		return "update";
 	}
 }

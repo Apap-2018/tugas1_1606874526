@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Cari Pegawai</title>
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+
+<script type="text/javascript" charset="utf8" src="	https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css" />
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<br>
+	<div align="left" style="padding: 20px">
+		<h2>Cari Pegawai</h2>
+		<form th:action="@{/pegawai/cari}" th:object="${pegawai}" method="POST">
+			<div class="form-group">
+			<label class="col-sm-3" for="provinsi">Provinsi:</label>
+			<select type="text" name="provinsi" id="provinsi">
+				<option selected="true" disabled="disabled">Pilih Provinsi</option>
+				<option th:each="provinsi: ${listProvinsi}" th:value="${provinsi.id}" th:text="${provinsi.nama}" name="provinsi"></option>
+			</select>
+		</div> 
+		
+		<div class="form-group">
+			<label class="col-sm-3" for="instansi">Nama Instansi:</label>
+    			<select type="text" name="instansi" id="instansi">
+					<option selected="true" disabled="disabled">Pilih Instansi</option>
+					<option th:each="instansi: ${listInstansi}" th:value="${instansi.id}" th:prov="${instansi.provinsi.id}" th:text="${instansi.nama}" name="instansi"></option>
+				</select>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-3" for="jabatan">Jabatan:</label>
+    			<select name="jabatan">
+    			<option selected="true" disabled="disabled">Pilih Jabatan</option>
+    			<option th:each="jabatan : ${listJabatan}" th:value="${jabatan.id}" th:text="${jabatan.nama}" name="jabatan"></option>
+				</select>
+		</div>
+		
+		<button type="submit" class="btn" name="cari" >Cari</button>
+	</form>
+	<br>
+		<table id="table_pegawai">
+			<thead>
+				<tr>
+					<th>NIP</th>
+					<th>Nama</th>
+					<th>Tempat Lahir</th>
+					<th>Tanggal Lahir</th>
+					<th>Tahun Masuk</th>
+					<th>Nama Instansi</th>
+					<th>Jabatan</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="pegawai: ${listPegawai}">
+					<td th:text="${pegawai.nip}"></td>
+					<td th:text="${pegawai.nama}"></td>
+                    <td th:text="${pegawai.tempat_lahir}"></td>
+                    <td th:text="${pegawai.tanggal_lahir}"></td>
+                    <td th:text="${pegawai.tahun_masuk}"></td>
+                    <td th:text="${nama}"></td>
+                    <td th:text="${namaJabatan}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+<script>
+	$(document).ready(function() {
+		$('#table_pegawai').DataTable();
+	});
+	
+</script>
+</html>
+
+
+

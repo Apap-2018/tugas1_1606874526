@@ -16,42 +16,35 @@
 
 <body>
 	<nav th:replace="fragments/fragment :: navbar"></nav>
-	<div align="left" style="padding: 20px">
+	<div style="padding: 20px">
 		<h3 th:text="${jabatan.nama}"></h3>
-		<table>
-			<thead>
-
+		<table class="table table-borderless">
+			<tbody>
 				<tr>
 					<th>Nama</th>
-					<th>
 					<td th:text="${jabatan.nama}"></td>
-					</th>
 				</tr>
 				<tr>
 					<th>Deskripsi</th>
-					<th>
 					<td th:text="${jabatan.deskripsi}"></td>
-					</th>
 				</tr>
 				<tr>
 					<th>Gaji Pokok</th>
-					<th>
 					<td th:text="${jabatan.gaji_pokok}"></td>
-					</th>
 				</tr>
-			</thead>
+			</tbody>
 
 		</table>
+		<br>
 		<form th:action="@{/jabatan/update-jabatan}" class="col-md-3"
 			method="get">
 			<input type="hidden" name="id_jabatan" th:value="${jabatan.id}">
-			<button type="submit">Ubah</button>
+			<button class="btn" type="submit">Ubah</button>
 		</form>
-
 		<form th:action="@{/jabatan/hapus}" th:object="${jabatan}"
 			method="POST">
 			<input type="hidden" th:field="*{id}" />
-			<button value="submit">Hapus</button>
+			<button class ="btn" style="margin: 10px" value="submit">Hapus</button>
 		</form>
 	</div>
 </body>

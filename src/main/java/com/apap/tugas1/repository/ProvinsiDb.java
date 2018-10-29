@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.apap.tugas1.model.ProvinsiModel;
 
+/**
+ * ProvinsiDb
+ */
 @Repository
 public interface ProvinsiDb extends JpaRepository<ProvinsiModel, Long>{
 	ProvinsiModel findById(long id);

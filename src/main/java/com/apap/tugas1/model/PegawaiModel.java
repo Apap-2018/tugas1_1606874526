@@ -51,16 +51,16 @@ public class PegawaiModel implements Serializable {
 	@NotNull
 	@Size(max = 255)
 	@Column(name = "tempat_lahir", nullable = false)
-	private String tempat_lahir;
+	private String tempatLahir;
 	
 	@NotNull
 	@Column(name = "tanggal_lahir", nullable = false)
-	private Date tanggal_lahir;
+	private Date tanggalLahir;
 	
 	@NotNull
 	@Size(max = 255)
 	@Column(name = "tahun_masuk", nullable = false)
-	private String tahun_masuk;
+	private String tahunMasuk;
 	
 	//
 	
@@ -102,27 +102,27 @@ public class PegawaiModel implements Serializable {
 	}
 
 	public String getTempat_lahir() {
-		return tempat_lahir;
+		return tempatLahir;
 	}
 
-	public void setTempat_lahir(String tempat_lahir) {
-		this.tempat_lahir = tempat_lahir;
+	public void setTempat_lahir(String tempatLahir) {
+		this.tempatLahir = tempatLahir;
 	}
 
 	public Date getTanggal_lahir() {
-		return tanggal_lahir;
+		return tanggalLahir;
 	}
 
-	public void setTanggal_lahir(Date tanggal_lahir) {
-		this.tanggal_lahir = tanggal_lahir;
+	public void setTanggal_lahir(Date tanggalLahir) {
+		this.tanggalLahir = tanggalLahir;
 	}
 
 	public String getTahun_masuk() {
-		return tahun_masuk;
+		return tahunMasuk;
 	}
 
-	public void setTahun_masuk(String tahun_masuk) {
-		this.tahun_masuk = tahun_masuk;
+	public void setTahun_masuk(String tahunMasuk) {
+		this.tahunMasuk = tahunMasuk;
 	}
 
 	public InstansiModel getInstansi() {
@@ -157,11 +157,9 @@ public class PegawaiModel implements Serializable {
 	
 	public int getUmur() {
 		// TODO Auto-generated method stub
-		LocalDate birthday = tanggal_lahir.toLocalDate();
+		LocalDate birthday = tanggalLahir.toLocalDate();
 		LocalDate now = LocalDate.now();
 		
 		return now.getYear() - birthday.getYear();
 	}
-
-	
 }

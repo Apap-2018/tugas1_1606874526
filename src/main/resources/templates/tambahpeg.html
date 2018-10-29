@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragment :: headerfragment">
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+	
+<body>
+	<nav th:replace="fragments/fragment :: navbar" ></nav>
+	<div align="left" style="padding: 20px">
+		<h2>Sukses!</h2>
+		<p th:text="'Pegawai dengan NIP ' + ${nipnya} + ' berhasil ditambahkan'"></p>
+		<p>Halaman akan kembali ke Tambah Pegawai. Loading... </p>
+		<meta http-equiv="refresh" content="4; url= " />
+	</div>
+</body>
+
+</html>

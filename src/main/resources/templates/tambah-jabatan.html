@@ -11,9 +11,15 @@
 		<h3>Tambah Jabatan</h3>
 		<form th:action="@{/jabatan/tambah}" th:object="${jabatan}"
 			method="POST">
-			Nama <input type="text" name="nama" /> <br> Deskripsi <input
-				type="text" name="deskripsi" /> <br> Gaji Pokok <input
-				type="number" id="gaji_pokok" name="gaji_pokok" /> <br>
+			<label class="col-sm-3" for="nama">Nama</label>
+   				<input type="text" name="nama" /> 
+			<br> 
+			<label class="col-sm-3" for="deskripsi">Deskripsi</label>
+				<input type="text" name="deskripsi" />
+   			<br>
+   			<label class="col-sm-3" for="gaji_pokok">Gaji Pokok</label>
+				<input type="number" id="gaji_pokok" name="gaji_pokok" /> <br>
+			<br>
 			<button type="submit">Simpan</button>
 		</form>
 	</div>
