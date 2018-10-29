@@ -23,18 +23,10 @@
 			<label class="col-sm-2" for="tahun_masuk">Tahun Masuk</label>
 				<input type="number" max="2018" th:value="*{tahun_masuk}" name="tahun_masuk" /> 
 				<br>
-			<label for="provinsi">Provinsi</label>
-							<span th:if="*{instansi} == null">
-								<select  class="form-control" required="required" name="provinsi" id="provinsi" th:value="${listProvinsi}">
-						      		<option th:each="provinsi : ${listProvinsi}" th:value="${provinsi.id}" th:text="${provinsi.nama}" ></option>
-						    	</select>
-							</span>
-							<span th:unless="*{instansi} == null">
-								<select  class="form-control" required="required" name="provinsi" id="provinsi" th:value="*{instansi.provinsi}">
-									<option  th:value="*{instansi.provinsi.id}" selected="selected" th:text="*{instansi.provinsi.nama}"></option>
-			                    	<option th:each="provinsi : ${listProvinsi}" th:value="${provinsi.id}" th:text="${provinsi.nama}" ></option>
-						    	</select>
-							</span>
+			<label class="col-sm-2" for="provinsi">Provinsi</label>
+			<select type="text" th:value="${listProvinsi}" name="provinsi" id="provinsi">
+				<option th:each="provinsi: ${listProvinsi}" th:value="${provinsi.id}" th:text="${provinsi.nama}" name="provinsi"></option>
+			</select>
 			<br>
 			<label class="col-sm-2" for="instansi">Nama Instansi</label>
    			<select type="text" th:value="*{instansi.provinsi}" name="instansi" id="instansi">
@@ -47,33 +39,14 @@
 			<select style="margin: 20px" name="listJabatan">
 				<option th:each="jabatan : ${listJabatan}" th:field="*{listJabatan[__${rowStat.index}__]}" th:value="${jabatan.id}" th:text="${jabatan.nama}"></option>
 			</select>
-			<button type="submit" name="deleteRow" style="margin: 5px;"  th:value="${rowStat.index}" th:style="${rowStat.count} == 1 ? 'display: none;' : ''">Delete Jabatan</button>
+			<button class="btn" type="submit" name="deleteRow" style="margin: 5px;"  th:value="${rowStat.index}" th:style="${rowStat.count} == 1 ? 'display: none;' : ''">Delete Jabatan</button>
 			
 			</span>
-			<button type="submit" name="addRow" style="margin: 5px;">Tambah Jabatan</button>
+			<button class="btn" type="submit" name="addRow" style="margin: 5px;">Tambah Jabatan</button>
 							
  			</div>	
  				
-			<button style="margin: 20px" type="submit">Simpan</button>
-</form>
+			<button class="btn" style="margin: 20px" type="submit">Simpan</button>
+		</form>
 </body>
-<script th:inline="javascript">
-	$('#provinsi').change(
-	     function() {
-	    	 console.log($(this).val());
-	         $.getJSON("/instansi/getInstansiByProvinsi", {
-	             idProvinsi : $(this).val(),
-	             ajax : 'true'
-	         }, function(data) {
-	             var html = '';
-	             var len = data.length;
-	             for ( var i = 0; i < len; i++) {
-	                 html += '<option value="' + data[i].id + '">'
-	                         + data[i].nama + '</option>';
-	             }
-	             html += '</option>';
-	             $('#instansi').html(html);
-	         });
-	     });
-	</script>
 </html>

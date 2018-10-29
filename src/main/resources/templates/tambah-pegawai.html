@@ -39,10 +39,10 @@
 				<option th:each="jabatan : ${listJabatan}" th:field="*{listJabatan[__${rowStat.index}__]}" th:value="${jabatan.id}" th:text="${jabatan.nama}"></option>
 			</select>
 			</span>
-			<button type="submit" name="addRow" style="margin: 5px;">Tambah Jabatan</button>
+			<button class="btn" type="submit" name="addRow" style="margin: 5px;">Tambah Jabatan</button>
  			</div>	
  				
-			<button style="margin: 20px" type="submit">Simpan</button>
+			<button class="btn" style="margin: 20px" type="submit">Simpan</button>
 </form>
 </body>
 </html>
